@@ -1,0 +1,59 @@
+/* Basic CSS with some intentional issues */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    /* Missing semicolon intentionally */
+    margin-bottom: 20px
+}
+
+.content {
+    margin: 20px 0;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Invalid CSS property - intentional bug */
+button:hover {
+    background-color: #0056b3;
+    transform-origin: invalid-value;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+/* Missing closing brace - intentional bug */
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f9fa;

@@ -1,0 +1,37 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Build Docker image
+      run: |
+        docker build -t ticketcool-booking-platform .
+
+    - name: Push Docker image
+      run: |
+        docker tag ticketcool-booking-platform mydockerhub/ticketcool-booking-platform:latest
+        docker push mydockerhub/ticketcool-booking-platform:latest
+
+    - name: Deploy to Server
+      run: |
+        ssh user@yourserver.com 'docker pull mydockerhub/ticketcool-booking-platform:latest && docker-compose up -d'
